@@ -58,7 +58,14 @@ class form_ListActivationvaluesService extends BaseService
 		}
 		else if ($question instanceof form_persistentdocument_list)
 		{
-			$results = $question->getDataSource()->getItems();
+			if($question instanceof form_persistentdocument_recipientGroupList)
+			{
+				$results = $question->getItems();
+			}
+			else
+			{
+				$results = $question->getDataSource()->getItems();
+			}
 		}
 		
 		return $results;
